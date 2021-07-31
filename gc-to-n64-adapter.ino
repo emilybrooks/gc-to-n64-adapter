@@ -77,8 +77,8 @@ void loop()
 
 //------------------------------------------------------------------------------
 // If the analog coordinate is below the deadzone radius, it will be set to 0
-// otherwise the analog coordinate range is shrunken
-// in order to fit into the space between the deadzone and the maximum
+// otherwise the analog coordinate range is shrunken in order to fit into the
+// space between the deadzone and the maximum
 //
 // n64:      n64 console report to write to
 // deadzone: how many analog stick values from the origin to ignore
@@ -89,8 +89,8 @@ void convert_to_deadzone(N64_Report_t* n64, uint8_t deadzone)
     const uint8_t NEW_RANGE = N64_RANGE - deadzone;
     boolean x_negative = false;
     boolean y_negative = false;
-    double new_x = 0;
-    double new_y = 0;
+    double new_x;
+    double new_y;
     //TODO: could this be done with integer division? would that be more accurate?
 
     //convert to quadrant 1 to make life easier
@@ -102,7 +102,7 @@ void convert_to_deadzone(N64_Report_t* n64, uint8_t deadzone)
 
     if (n64->xAxis < deadzone)
     {
-        n64->xAxis = 0;
+        new_x = 0;
     }
     else
     {
@@ -112,7 +112,7 @@ void convert_to_deadzone(N64_Report_t* n64, uint8_t deadzone)
 
     if (n64->yAxis < deadzone)
     {
-        n64->yAxis = 0;
+        new_y = 0;
     }
     else
     {
