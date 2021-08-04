@@ -16,3 +16,10 @@ https://github.com/ClydePowers/NintendoSpy-1/releases
 ## Building
 The only prerequisite is installing the Nintendo library by Nicohood from the
 library manager. This library requires a 16MHz clock speed.
+
+## Hardware
+
+![Wiring diagram](diagram.png)
+
+I'm not super experienced with electronics, there's probably an easier or
+cheaper way of doing this.
