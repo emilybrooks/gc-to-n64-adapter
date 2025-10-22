@@ -8,6 +8,10 @@
 // to trigger a c button input
 #define CSTICK_THRESHOLD 40
 
+// when the deadzone is disabled,
+// how many analog stick values from the origin to ignore
+#define DEFAULT_RADIUS 3
+
 // when the deadzone is enabled,
 // how many analog stick values from the origin to ignore
 #define DEADZONE_RADIUS 12
@@ -67,11 +71,15 @@ void loop()
 
     convert_analog_stick(&input, &data.report);
 
+    uint8_t radius = DEFAULT_RADIUS;
+    
     if (digitalRead(SWITCH_PIN) == LOW)
     {
-        convert_to_deadzone(&data.report, DEADZONE_RADIUS);
+        radius = DEADZONE_RADIUS;
     }
 
+    convert_to_deadzone(&data.report, radius);
+    
     n64_console.write(data);
 }
 
